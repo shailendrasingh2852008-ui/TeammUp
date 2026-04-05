@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamUp</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#0a0a0f;
+  --text:#ffffff;
+  --accent:#d4af37;
+  --accent2:#6e5cff;
+  --glass:rgba(255,255,255,0.06);
+}
+
+.light {
+  --bg:#f6f8fb;
+  --text:#111;
+  --accent:#b8962e;
+  --accent2:#5a4bff;
+  --glass:rgba(0,0,0,0.05);
+}
+
+body {
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.4s ease;
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav {
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
+  backdrop-filter:blur(12px);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+nav ul {
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+nav li {
+  cursor:pointer;
+  transition:0.3s;
+}
+
+nav li:hover {
+  color:var(--accent);
+}
+
+/* HERO */
+.hero {
+  text-align:center;
+  padding:110px 20px;
+  animation:fadeUp 1s ease;
+}
+
+.hero img {
+  width:130px;
+  margin-bottom:20px;
+  animation:float 5s infinite ease-in-out;
+}
+
+.hero h1 {
+  font-size:3rem;
+  color: #ffffff; /* Pure white */
+}
+.hero p {
+  color:var(--accent);
+}
+
+/* BLOB BACKGROUND */
+.blob {
+  position:absolute;
+  width:350px;
+  height:350px;
+  background:linear-gradient(45deg,var(--accent),var(--accent2));
+  filter:blur(80px);
+  border-radius:50%;
+  top:20%;
+  left:10%;
+  animation:float 8s infinite ease-in-out;
+  z-index:-1;
+}
+
+/* SECTION */
+.section {
+  padding:70px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* CARDS */
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card {
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  padding:20px;
+  border-radius:15px;
+  transition:0.4s;
+  transform:translateY(20px);
+  opacity:0;
+}
+
+.card.show {
+  transform:translateY(0);
+  opacity:1;
+}
+
+.card:hover {
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 0 30px rgba(212,175,55,0.3);
+}
+
+/* CONTACT */
+.contact a {
+  display:block;
+  margin:10px 0;
+  color:var(--accent);
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.contact a:hover {
+  transform:translateX(5px);
+}
+
+/* BUTTON */
+button {
+  padding:12px 22px;
+  border:none;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:#fff;
+  cursor:pointer;
+  border-radius:8px;
+  transition:0.3s;
+}
+
+button:hover {
+  transform:scale(1.05);
+}
+
+/* ANIMATIONS */
+@keyframes float {
+  0% {transform:translateY(0);}
+  50% {transform:translateY(-25px);}
+  100% {transform:translateY(0);}
+}
+
+@keyframes fadeUp {
+  from {
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1 {font-size:2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob"></div>
+
+<!-- NAV -->
+<nav>
+  <h2>TeamUp</h2>
+  <ul>
+    <li onclick="scrollToSection('services')">Services</li>
+    <li onclick="scrollToSection('about')">About</li>
+    <li onclick="scrollToSection('contact')">Contact</li>
+  </ul>
+  <span onclick="toggleTheme()">🌗</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="logo.jpg">
+  <h1>India's Fastest Service Network</h1>
+  <p>On Demand Service Offerings</p>
+  <br>
+  <button onclick="scrollToSection('contact')">Get Started</button>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <h2>Our Services</h2>
+  <div class="cards">
+    <div class="card">Web Designing (Business Websites)</div>
+    <div class="card">Graphic Design (Posters, Flyers, Brochures)</div>
+    <div class="card">Logo & Branding</div>
+    <div class="card">Video Editing</div>
+    <div class="card">AI Animation Videos</div>
+    <div class="card">Photography (Private Events)</div>
+    <div class="card">Video Shoot (Product / Event)</div>
+    <div class="card">Social Media Marketing</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="card">
+    <h2>About TeamUp</h2>
+    <p>
+      TeamUp delivers premium digital, creative, and AI-powered services for businesses.
+      Fast, scalable, and designed for growth.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact">
+  <h2>Contact</h2>
+
+  <a href="tel:+917737422401">📞 +91 7737422401</a>
+  <a href="https://wa.me/917737422401">💬 WhatsApp</a>
+  <a href="https://www.instagram.com/teamup.india">📸 Instagram</a>
+  <a href="https://www.linkedin.com/in/teamup-082b4a35a">💼 LinkedIn</a>
+  <a href="mailto:teamup1306@gmail.com">✉️ teamup1306@gmail.com</a>
+
+</section>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle("light");
+}
+
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+/* SCROLL ANIMATION */
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll', ()=>{
+  cards.forEach(card=>{
+    let top = card.getBoundingClientRect().top;
+    if(top < window.innerHeight - 50){
+      card.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
